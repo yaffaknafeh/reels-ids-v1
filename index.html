@@ -318,11 +318,6 @@ function handleSubmit() {
     return;
   }
 
-  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxSOb-fA5bQrnanPZPKUoQTw-pfIkMc5oj6tPWPkYyuGWOQ4nMrxCLa-jZCmf2HKgB2/exec") {
-    showToast("⚠️ Apps Script URL not set!", "error");
-    return;
-  }
-
   var btn = document.getElementById("submitBtn");
   btn.disabled = true;
 
