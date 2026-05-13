@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Yaffa Knafeh – Reels Ideas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold:      #C8922A;
+    --gold-light:#E8B84B;
+    --dark:      #1a1a1a;
+    --card-bg:   #ffffff;
+    --page-bg:   #f5f0e8;
+    --border:    #e0d5c0;
+    --text:      #2c2c2c;
+    --muted:     #666;
+    --radius:    12px;
+    --shadow:    0 2px 16px rgba(0,0,0,0.08);
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Rubik', Arial, sans-serif;
+    background: var(--page-bg);
+    color: var(--text);
+    padding: 0 0 48px;
+  }
+
+  /* ── Header ───────────────────────────────── */
+  .header {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 24px 16px 20px;
+  }
+  .header img.logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold);
+    margin-bottom: 10px;
+    display: block;
+    margin-inline: auto;
+  }
+  .header h1 { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+  .header p  { margin-top: 4px; font-size: 0.82rem; color: #bbb; }
+
+  /* ── Language toggle ──────────────────────── */
+  .lang-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 20px 16px 0;
+  }
+  .lang-btn {
+    flex: 1;
+    max-width: 160px;
+    padding: 11px 0;
+    border: 2px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .lang-btn:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .lang-btn:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+  .lang-btn.active { background: var(--gold); color: #fff; }
+
+  /* ── Cards ────────────────────────────────── */
+  .container {
+    width: 100%;
+    max-width: 480px;
+    margin: 20px auto 0;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 16px;
+  }
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 5px;
+    margin-top: 12px;
+  }
+  label:first-of-type { margin-top: 0; }
+
+  input[type="text"],
+  input[type="url"],
+  textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-family: inherit;
+    font-size: 16px;
+    background: #fafaf8;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="text"]:focus,
+  input[type="url"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200,146,42,0.15);
+  }
+  textarea { min-height: 80px; }
+
+  /* ── Submit ───────────────────────────────── */
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: var(--radius);
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(200,146,42,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .submit-btn:active  { transform: scale(0.98); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  /* ── Toast ────────────────────────────────── */
+  #toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: transform 0.35s ease;
+    z-index: 999;
+    white-space: nowrap;
+    max-width: 90vw;
+    text-align: center;
+  }
+  #toast.show    { transform: translateX(-50%) translateY(0); }
+  #toast.success { background: #2d7a4f; }
+  #toast.error   { background: #c0392b; }
+</style>
+</head>
+<body data-lang="hebrew">
+
+<div class="header">
+  <img class="logo"
+       src="https://d25t2285lxl5rf.cloudfront.net/images/shops/44092.png"
+       alt="Yaffa Knafeh Logo"
+       onerror="this.style.display='none'" />
+  <h1 id="headerTitle">יאפא כנאפה – רעיונות לריילס</h1>
+  <p  id="headerSub">הגישו רעיונות לתוכן לרשתות החברתיות</p>
+</div>
+
+<div class="lang-toggle-wrap">
+  <button class="lang-btn" id="btnAr" onclick="setLang('arabic')">عربي</button>
+  <button class="lang-btn active" id="btnHe" onclick="setLang('hebrew')">עברית</button>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-title" id="lblWhoTitle">פרטי המגיש</div>
+    <label id="lblName">שם מלא *</label>
+    <input type="text" id="submitter" required />
+  </div>
+
+  <div class="card">
+    <div class="card-title" id="lblCopyTitle">טקסט / קופי</div>
+    <label id="lblCopyText">הקלידו את הטקסט לפוסט *</label>
+    <textarea id="copyText"></textarea>
+  </div>
+
+  <div class="card">
+    <div class="card-title" id="lblMediaTitle">סרטון / תמונה</div>
+    <label id="lblMediaDesc">תארו את הסרטון או התמונה המוצע/ת *</label>
+    <textarea id="mediaDesc"></textarea>
+  </div>
+
+  <div class="card">
+    <div class="card-title" id="lblLinkTitle">קישור לדוגמה</div>
+    <label id="lblLinkText">קישור להשראה (אופציונלי)</label>
+    <input type="url" id="linkRef" placeholder="https://www.instagram.com/reel/..." />
+  </div>
+
+  <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+    <span id="submitLabel">שלחו רעיון</span>
+  </button>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ============================================================
+//  STEP 1 — Paste your Apps Script Web App URL here
+//  (see instructions below on how to get it)
+// ============================================================
+var APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+// ============================================================
+
+var STRINGS = {
+  arabic: {
+    headerTitle:   "يافا كنافة – أفكار ريلز",
+    headerSub:     "أرسل أفكارك لمحتوى السوشيال ميديا",
+    lblWhoTitle:   "معلومات المرسل",
+    lblName:       "الاسم الكامل *",
+    namePh:        "اكتب اسمك...",
+    lblCopyTitle:  "نص / كتابة",
+    lblCopyText:   "اكتب نص المنشور *",
+    copyPh:        "مثلاً: إحنا هون لآخر زبون...",
+    lblMediaTitle: "فيديو / صورة",
+    lblMediaDesc:  "صف الفيديو أو الصورة المقترحة *",
+    mediaPh:       "مثلاً: فيديو سريع لطريق الوصول لفرع يافا كنافة...",
+    lblLinkTitle:  "رابط مرجعي",
+    lblLinkText:   "رابط للإلهام (اختياري)",
+    submitLabel:   "أرسل الفكرة",
+    successMsg:    "تم الإرسال بنجاح!",
+    errorMsg:      "حدث خطأ، حاول مجدداً",
+    requiredMsg:   "يرجى تعبئة الحقول المطلوبة"
+  },
+  hebrew: {
+    headerTitle:   "יאפא כנאפה – רעיונות לריילס",
+    headerSub:     "הגישו רעיונות לתוכן לרשתות החברתיות",
+    lblWhoTitle:   "פרטי המגיש",
+    lblName:       "שם מלא *",
+    namePh:        "הכניסו את שמכם...",
+    lblCopyTitle:  "טקסט / קופי",
+    lblCopyText:   "הקלידו את הטקסט לפוסט *",
+    copyPh:        "לדוגמה: עין הסערה של יאפא כנאפה...",
+    lblMediaTitle: "סרטון / תמונה",
+    lblMediaDesc:  "תארו את הסרטון או התמונה המוצע/ת *",
+    mediaPh:       "לדוגמה: צילום בלנדר בפעולה מלמעלה...",
+    lblLinkTitle:  "קישור לדוגמה",
+    lblLinkText:   "קישור להשראה (אופציונלי)",
+    submitLabel:   "שלחו רעיון",
+    successMsg:    "הרעיון נשלח בהצלחה!",
+    errorMsg:      "שגיאה, נסו שוב",
+    requiredMsg:   "אנא מלאו את השדות החובה"
+  }
+};
+
+var currentLang = "hebrew";
+
+function setLang(lang) {
+  currentLang = lang;
+  document.body.setAttribute("data-lang", lang);
+  var s = STRINGS[lang];
+  document.getElementById("btnAr").classList.toggle("active", lang === "arabic");
+  document.getElementById("btnHe").classList.toggle("active", lang === "hebrew");
+  document.getElementById("headerTitle").textContent   = s.headerTitle;
+  document.getElementById("headerSub").textContent     = s.headerSub;
+  document.getElementById("lblWhoTitle").textContent   = s.lblWhoTitle;
+  document.getElementById("lblName").textContent       = s.lblName;
+  document.getElementById("submitter").placeholder     = s.namePh;
+  document.getElementById("lblCopyTitle").textContent  = s.lblCopyTitle;
+  document.getElementById("lblCopyText").textContent   = s.lblCopyText;
+  document.getElementById("copyText").placeholder      = s.copyPh;
+  document.getElementById("lblMediaTitle").textContent = s.lblMediaTitle;
+  document.getElementById("lblMediaDesc").textContent  = s.lblMediaDesc;
+  document.getElementById("mediaDesc").placeholder     = s.mediaPh;
+  document.getElementById("lblLinkTitle").textContent  = s.lblLinkTitle;
+  document.getElementById("lblLinkText").textContent   = s.lblLinkText;
+  document.getElementById("submitLabel").textContent   = s.submitLabel;
+}
+
+setLang("hebrew");
+
+function handleSubmit() {
+  var s         = STRINGS[currentLang];
+  var submitter = document.getElementById("submitter").value.trim();
+  var copyText  = document.getElementById("copyText").value.trim();
+  var mediaDesc = document.getElementById("mediaDesc").value.trim();
+  var linkRef   = document.getElementById("linkRef").value.trim();
+
+  if (!submitter || !copyText || !mediaDesc) {
+    showToast(s.requiredMsg, "error");
+    return;
+  }
+
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === "YOUR_APPS_SCRIPT_WEB_APP_URL_HERE") {
+    showToast("⚠️ Apps Script URL not set!", "error");
+    return;
+  }
+
+  var btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+
+  var payload = {
+    lang:      currentLang,
+    submitter: submitter,
+    copyText:  copyText,
+    mediaDesc: mediaDesc,
+    link:      linkRef
+  };
+
+  // Send data to Apps Script backend via fetch (no-cors because GAS redirects)
+  fetch(APPS_SCRIPT_URL, {
+    method:  "POST",
+    mode:    "no-cors",
+    headers: { "Content-Type": "text/plain" },
+    body:    JSON.stringify(payload)
+  })
+  .then(function() {
+    // no-cors means we can't read the response body,
+    // but if we get here without an error the request reached GAS.
+    btn.disabled = false;
+    showToast(s.successMsg, "success");
+    document.getElementById("submitter").value = "";
+    document.getElementById("copyText").value  = "";
+    document.getElementById("mediaDesc").value = "";
+    document.getElementById("linkRef").value   = "";
+  })
+  .catch(function() {
+    btn.disabled = false;
+    showToast(s.errorMsg, "error");
+  });
+}
+
+function showToast(msg, type) {
+  var t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = "show " + (type || "");
+  setTimeout(function() { t.className = ""; }, 3500);
+}
+</script>
+</body>
+</html>
