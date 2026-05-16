@@ -3,182 +3,165 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Yaffa Knafeh – Reels Ideas</title>
+<title>יאפא כנאפה – רעיונות לרילס</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --gold:      #C8922A;
-    --gold-light:#E8B84B;
-    --dark:      #1a1a1a;
-    --card-bg:   #ffffff;
-    --page-bg:   #f5f0e8;
-    --border:    #e0d5c0;
-    --text:      #2c2c2c;
-    --muted:     #666;
-    --radius:    12px;
-    --shadow:    0 2px 16px rgba(0,0,0,0.08);
-  }
+:root {
+  --gold:      #C8922A;
+  --gold-light:#E8B84B;
+  --dark:      #1a1a1a;
+  --card-bg:   #ffffff;
+  --page-bg:   #f5f0e8;
+  --border:    #e0d5c0;
+  --text:      #2c2c2c;
+  --muted:     #777;
+  --radius:    14px;
+  --shadow:    0 2px 20px rgba(0,0,0,0.07);
+}
 
-  html, body {
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
 
-  body {
-    font-family: 'Rubik', Arial, sans-serif;
-    background: var(--page-bg);
-    color: var(--text);
-    padding: 0 0 48px;
-  }
+body {
+  font-family: 'Rubik', sans-serif;
+  background: var(--page-bg);
+  color: var(--text);
+  padding-bottom: 56px;
+}
 
-  /* ── Header ───────────────────────────────── */
-  .header {
-    background: var(--dark);
-    color: #fff;
-    text-align: center;
-    padding: 24px 16px 20px;
-  }
-  .header img.logo {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--gold);
-    margin-bottom: 10px;
-    display: block;
-    margin-inline: auto;
-  }
-  .header h1 { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
-  .header p  { margin-top: 4px; font-size: 0.82rem; color: #bbb; }
+.header {
+  background: var(--dark);
+  color: #fff;
+  text-align: center;
+  padding: 28px 16px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 120%, rgba(200,146,42,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header img.logo {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  display: block;
+  margin: 0 auto 12px;
+  position: relative;
+}
+.header h1 { font-size: 1.2rem; font-weight: 700; line-height: 1.35; position: relative; }
+.header p  { margin-top: 5px; font-size: 0.8rem; color: #aaa; position: relative; }
 
-  /* ── Language toggle ──────────────────────── */
-  .lang-toggle-wrap {
-    display: flex;
-    justify-content: center;
-    padding: 20px 16px 0;
-  }
-  .lang-btn {
-    flex: 1;
-    max-width: 160px;
-    padding: 11px 0;
-    border: 2px solid var(--gold);
-    background: transparent;
-    color: var(--gold);
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .lang-btn:first-child { border-radius: var(--radius) 0 0 var(--radius); }
-  .lang-btn:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
-  .lang-btn.active { background: var(--gold); color: #fff; }
+.lang-wrap { display: flex; justify-content: center; padding: 18px 16px 0; }
+.lang-btn {
+  flex: 1; max-width: 150px; padding: 10px 0;
+  border: 2px solid var(--gold); background: transparent; color: var(--gold);
+  font-family: inherit; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; transition: background .2s, color .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.lang-btn:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.lang-btn:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+.lang-btn.active      { background: var(--gold); color: #fff; }
 
-  /* ── Cards ────────────────────────────────── */
-  .container {
-    width: 100%;
-    max-width: 480px;
-    margin: 20px auto 0;
-    padding: 0 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 18px 16px;
-  }
-  .card-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 14px;
-  }
+.container {
+  max-width: 480px; margin: 18px auto 0;
+  padding: 0 12px; display: flex; flex-direction: column; gap: 12px;
+}
 
-  label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--muted);
-    margin-bottom: 5px;
-    margin-top: 12px;
-  }
-  label:first-of-type { margin-top: 0; }
+.card {
+  background: var(--card-bg); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 18px 16px;
+  animation: fadeUp .4s ease both;
+}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.10s}
+.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.20s}
+.card:nth-child(5){animation-delay:.25s}
 
-  input[type="text"],
-  input[type="url"],
-  textarea {
-    width: 100%;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 13px;
-    font-family: inherit;
-    font-size: 16px;
-    background: #fafaf8;
-    color: var(--text);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    resize: vertical;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-  input[type="text"]:focus,
-  input[type="url"]:focus,
-  textarea:focus {
-    outline: none;
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(200,146,42,0.15);
-  }
-  textarea { min-height: 80px; }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
+}
 
-  /* ── Submit ───────────────────────────────── */
-  .submit-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    border: none;
-    border-radius: var(--radius);
-    color: #fff;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(200,146,42,0.35);
-    transition: transform 0.15s, box-shadow 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .submit-btn:active  { transform: scale(0.98); }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.card-title {
+  font-size: 0.88rem; font-weight: 700; color: var(--gold);
+  margin-bottom: 13px; display: flex; align-items: center; gap: 7px;
+}
+.card-title .icon {
+  width: 22px; height: 22px; background: rgba(200,146,42,0.12);
+  border-radius: 6px; display: flex; align-items: center;
+  justify-content: center; font-size: 0.75rem; flex-shrink: 0;
+}
 
-  /* ── Toast ────────────────────────────────── */
-  #toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(120px);
-    background: #333;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: transform 0.35s ease;
-    z-index: 999;
-    white-space: nowrap;
-    max-width: 90vw;
-    text-align: center;
-  }
-  #toast.show    { transform: translateX(-50%) translateY(0); }
-  #toast.success { background: #2d7a4f; }
-  #toast.error   { background: #c0392b; }
+label {
+  display: block; font-size: 0.78rem; font-weight: 600;
+  color: var(--muted); margin-bottom: 6px; margin-top: 13px;
+}
+label:first-of-type { margin-top: 0; }
+
+input[type="text"], input[type="url"], textarea {
+  width: 100%; border: 1.5px solid var(--border); border-radius: 9px;
+  padding: 10px 13px; font-family: inherit; font-size: 16px;
+  background: #fafaf8; color: var(--text);
+  transition: border-color .2s, box-shadow .2s;
+  resize: vertical; -webkit-appearance: none; appearance: none;
+}
+input[type="text"]:focus, input[type="url"]:focus, textarea:focus {
+  outline: none; border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,146,42,0.13);
+}
+textarea { min-height: 80px; }
+
+.chip-row { display: flex; gap: 8px; margin-top: 4px; }
+.chip {
+  flex: 1; padding: 10px 4px;
+  border: 2px solid var(--border); border-radius: 50px;
+  background: #fafaf8; color: var(--muted);
+  font-family: inherit; font-size: 0.84rem; font-weight: 600;
+  cursor: pointer; text-align: center;
+  transition: border-color .18s, background .18s, color .18s, transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.chip:active { transform: scale(0.96); }
+.chip.selected { border-color: var(--gold); background: var(--gold); color: #fff; }
+
+.submit-btn {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none; border-radius: var(--radius); color: #fff;
+  font-family: inherit; font-size: 1rem; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 18px rgba(200,146,42,0.38);
+  transition: transform .15s, box-shadow .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.submit-btn:active   { transform: scale(0.98); box-shadow: 0 2px 8px rgba(200,146,42,0.3); }
+.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+#toast {
+  position: fixed; bottom: 22px; left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #222; color: #fff; padding: 12px 26px;
+  border-radius: 50px; font-size: 0.88rem; font-weight: 600;
+  transition: transform .32s cubic-bezier(.34,1.56,.64,1);
+  z-index: 999; white-space: nowrap; max-width: 88vw; text-align: center;
+}
+#toast.show    { transform: translateX(-50%) translateY(0); }
+#toast.success { background: #2a6e49; }
+#toast.error   { background: #b03030; }
 </style>
 </head>
 <body data-lang="hebrew">
@@ -186,13 +169,13 @@
 <div class="header">
   <img class="logo"
        src="https://d25t2285lxl5rf.cloudfront.net/images/shops/44092.png"
-       alt="Yaffa Knafeh Logo"
+       alt="Yaffa Knafeh"
        onerror="this.style.display='none'" />
   <h1 id="headerTitle">יאפא כנאפה – רעיונות לרילס</h1>
   <p  id="headerSub">הגישו רעיונות לתוכן לרשתות החברתיות</p>
 </div>
 
-<div class="lang-toggle-wrap">
+<div class="lang-wrap">
   <button class="lang-btn" id="btnAr" onclick="setLang('arabic')">عربي</button>
   <button class="lang-btn active" id="btnHe" onclick="setLang('hebrew')">עברית</button>
 </div>
@@ -200,31 +183,41 @@
 <div class="container">
 
   <div class="card">
-    <div class="card-title" id="lblWhoTitle">פרטי המגיש</div>
+    <div class="card-title"><span class="icon">👤</span><span id="lblWhoTitle">פרטי המגיש</span></div>
     <label id="lblName">שם מלא *</label>
-    <input type="text" id="submitter" required />
+    <input type="text" id="submitter" placeholder="הכניסו את שמכם..." />
   </div>
 
   <div class="card">
-    <div class="card-title" id="lblCopyTitle">טקסט / קופי</div>
+    <div class="card-title"><span class="icon">✍️</span><span id="lblCopyTitle">טקסט / קופי</span></div>
     <label id="lblCopyText">הקלידו את הטקסט לפוסט *</label>
-    <textarea id="copyText"></textarea>
+    <textarea id="copyText" placeholder="לדוגמה: עין הסערה של יאפא כנאפה..."></textarea>
   </div>
 
   <div class="card">
-    <div class="card-title" id="lblMediaTitle">סרטון / תמונה</div>
+    <div class="card-title"><span class="icon">🎬</span><span id="lblMediaTitle">סרטון / תמונה</span></div>
     <label id="lblMediaDesc">תארו את הסרטון או התמונה המוצע/ת *</label>
-    <textarea id="mediaDesc"></textarea>
+    <textarea id="mediaDesc" placeholder="לדוגמה: צילום בלנדר בפעולה מלמעלה..."></textarea>
   </div>
 
   <div class="card">
-    <div class="card-title" id="lblLinkTitle">קישור לדוגמה</div>
+    <div class="card-title"><span class="icon">🏷️</span><span id="lblTypeTitle">סוג התוכן</span></div>
+    <label id="lblTypeLabel">בחרו סוג תוכן *</label>
+    <div class="chip-row">
+      <button class="chip" id="chipEdu"   onclick="selectChip('educational')">תעשייתי</button>
+      <button class="chip" id="chipEnt"   onclick="selectChip('entertainment')">בידורי</button>
+      <button class="chip" id="chipPromo" onclick="selectChip('promotional')">פרסומי</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🔗</span><span id="lblLinkTitle">קישור לדוגמה</span></div>
     <label id="lblLinkText">קישור להשראה (אופציונלי)</label>
     <input type="url" id="linkRef" placeholder="https://www.instagram.com/reel/..." />
   </div>
 
   <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
-    <span id="submitLabel">שלחו רעיון</span>
+    <span id="submitLabel">שלחו רעיון ✨</span>
   </button>
 
 </div>
@@ -232,14 +225,9 @@
 <div id="toast"></div>
 
 <script>
-// ============================================================
-//  STEP 1 — Paste your Apps Script Web App URL here
-//  (see instructions below on how to get it)
-// ============================================================
-var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzIH8kG_kip0nH2uD8gY2MJdNfNU1X6s61pvXiJg4qiGGe3JiM6j2AzkEm6tmS7GKOmw/exec";
-// ============================================================
+var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwy9c8XvLekXEZnDT3zIeiYqfzYxQG8e0fG1n_wST3tKlVDr-yu7CRhZh-rmJyr7Exq/exec";
 
-var STRINGS = {
+var S = {
   arabic: {
     headerTitle:   "يافا كنافة – أفكار ريلز",
     headerSub:     "أرسل أفكارك لمحتوى السوشيال ميديا",
@@ -251,13 +239,19 @@ var STRINGS = {
     copyPh:        "مثلاً: إحنا هون لآخر زبون...",
     lblMediaTitle: "فيديو / صورة",
     lblMediaDesc:  "صف الفيديو أو الصورة المقترحة *",
-    mediaPh:       "مثلاً: فيديو سريع لطريق الوصول لفرع يافا كنافة...",
+    mediaPh:       "مثلاً: فيديو سريع لطريق الوصول...",
+    lblTypeTitle:  "نوع المحتوى",
+    lblTypeLabel:  "اختر نوع المحتوى *",
+    chipEdu:       "تعليمي",
+    chipEnt:       "ترفيهي",
+    chipPromo:     "ترويجي",
     lblLinkTitle:  "رابط مرجعي",
     lblLinkText:   "رابط للإلهام (اختياري)",
-    submitLabel:   "أرسل الفكرة",
-    successMsg:    "تم الإرسال بنجاح!",
-    errorMsg:      "حدث خطأ، حاول مجدداً",
-    requiredMsg:   "يرجى تعبئة الحقول المطلوبة"
+    submitLabel:   "أرسل الفكرة ✨",
+    successMsg:    "✅ تم الإرسال بنجاح!",
+    errorMsg:      "❌ حدث خطأ، حاول مجدداً",
+    requiredMsg:   "⚠️ يرجى تعبئة جميع الحقول واختيار نوع المحتوى",
+    sendingLabel:  "...جاري الإرسال"
   },
   hebrew: {
     headerTitle:   "יאפא כנאפה – רעיונות לרילס",
@@ -271,21 +265,28 @@ var STRINGS = {
     lblMediaTitle: "סרטון / תמונה",
     lblMediaDesc:  "תארו את הסרטון או התמונה המוצע/ת *",
     mediaPh:       "לדוגמה: צילום בלנדר בפעולה מלמעלה...",
+    lblTypeTitle:  "סוג התוכן",
+    lblTypeLabel:  "בחרו סוג תוכן *",
+    chipEdu:       "תעשייתי",
+    chipEnt:       "בידורי",
+    chipPromo:     "פרסומי",
     lblLinkTitle:  "קישור לדוגמה",
     lblLinkText:   "קישור להשראה (אופציונלי)",
-    submitLabel:   "שלחו רעיון",
-    successMsg:    "הרעיון נשלח בהצלחה!",
-    errorMsg:      "שגיאה, נסו שוב",
-    requiredMsg:   "אנא מלאו את השדות החובה"
+    submitLabel:   "שלחו רעיון ✨",
+    successMsg:    "✅ הרעיון נשלח בהצלחה!",
+    errorMsg:      "❌ שגיאה, נסו שוב",
+    requiredMsg:   "⚠️ אנא מלאו את כל השדות ובחרו סוג תוכן",
+    sendingLabel:  "שולח..."
   }
 };
 
-var currentLang = "hebrew";
+var currentLang  = "hebrew";
+var selectedType = "";
 
 function setLang(lang) {
   currentLang = lang;
   document.body.setAttribute("data-lang", lang);
-  var s = STRINGS[lang];
+  var s = S[lang];
   document.getElementById("btnAr").classList.toggle("active", lang === "arabic");
   document.getElementById("btnHe").classList.toggle("active", lang === "hebrew");
   document.getElementById("headerTitle").textContent   = s.headerTitle;
@@ -299,37 +300,48 @@ function setLang(lang) {
   document.getElementById("lblMediaTitle").textContent = s.lblMediaTitle;
   document.getElementById("lblMediaDesc").textContent  = s.lblMediaDesc;
   document.getElementById("mediaDesc").placeholder     = s.mediaPh;
+  document.getElementById("lblTypeTitle").textContent  = s.lblTypeTitle;
+  document.getElementById("lblTypeLabel").textContent  = s.lblTypeLabel;
+  document.getElementById("chipEdu").textContent       = s.chipEdu;
+  document.getElementById("chipEnt").textContent       = s.chipEnt;
+  document.getElementById("chipPromo").textContent     = s.chipPromo;
   document.getElementById("lblLinkTitle").textContent  = s.lblLinkTitle;
   document.getElementById("lblLinkText").textContent   = s.lblLinkText;
   document.getElementById("submitLabel").textContent   = s.submitLabel;
 }
 
-setLang("hebrew");
+function selectChip(type) {
+  selectedType = type;
+  document.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("selected"); });
+  var map = { educational:"chipEdu", entertainment:"chipEnt", promotional:"chipPromo" };
+  document.getElementById(map[type]).classList.add("selected");
+}
 
 function handleSubmit() {
-  var s         = STRINGS[currentLang];
+  var s         = S[currentLang];
   var submitter = document.getElementById("submitter").value.trim();
   var copyText  = document.getElementById("copyText").value.trim();
   var mediaDesc = document.getElementById("mediaDesc").value.trim();
   var linkRef   = document.getElementById("linkRef").value.trim();
 
-  if (!submitter || !copyText || !mediaDesc) {
+  if (!submitter || !copyText || !mediaDesc || !selectedType) {
     showToast(s.requiredMsg, "error");
     return;
   }
 
   var btn = document.getElementById("submitBtn");
   btn.disabled = true;
+  document.getElementById("submitLabel").textContent = s.sendingLabel;
 
   var payload = {
-    lang:      currentLang,
-    submitter: submitter,
-    copyText:  copyText,
-    mediaDesc: mediaDesc,
-    link:      linkRef
+    lang:        currentLang,
+    submitter:   submitter,
+    copyText:    copyText,
+    mediaDesc:   mediaDesc,
+    contentType: selectedType,
+    link:        linkRef
   };
 
-  // Send data to Apps Script backend via fetch (no-cors because GAS redirects)
   fetch(APPS_SCRIPT_URL, {
     method:  "POST",
     mode:    "no-cors",
@@ -337,17 +349,19 @@ function handleSubmit() {
     body:    JSON.stringify(payload)
   })
   .then(function() {
-    // no-cors means we can't read the response body,
-    // but if we get here without an error the request reached GAS.
     btn.disabled = false;
+    document.getElementById("submitLabel").textContent = s.submitLabel;
     showToast(s.successMsg, "success");
     document.getElementById("submitter").value = "";
     document.getElementById("copyText").value  = "";
     document.getElementById("mediaDesc").value = "";
     document.getElementById("linkRef").value   = "";
+    selectedType = "";
+    document.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("selected"); });
   })
   .catch(function() {
     btn.disabled = false;
+    document.getElementById("submitLabel").textContent = s.submitLabel;
     showToast(s.errorMsg, "error");
   });
 }
@@ -355,10 +369,11 @@ function handleSubmit() {
 function showToast(msg, type) {
   var t = document.getElementById("toast");
   t.textContent = msg;
-  t.className = "show " + (type || "");
-  setTimeout(function() { t.className = ""; }, 3500);
+  t.className   = "show " + (type || "");
+  setTimeout(function(){ t.className = ""; }, 3500);
 }
+
+setLang("hebrew");
 </script>
 </body>
 </html>
-
